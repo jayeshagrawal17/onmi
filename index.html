@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ayurvedic Price List & WhatsApp Direct Ordering</title>
+
+    <style>
+        /* Modern System Color Tokens & CSS Reset */
+        :root {
+            --primary: #047857;
+            --primary-dark: #065f46;
+            --primary-light: #ecfdf5;
+            --primary-border: #a7f3d0;
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+            --rose-500: #ef4444;
+            --rose-50: #fef2f2;
+            --radius-lg: 12px;
+            --radius-md: 8px;
+            --radius-sm: 6px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--slate-100);
+            color: var(--slate-800);
+            padding-bottom: 110px;
+            min-height: 100vh;
+            line-height: 1.4;
+        }
+
+        /* Sticky Modern Header */
+        header {
+            background: linear-gradient(135deg, #064e3b 0%, #047857 50%, #0f766e 100%);
+            color: #ffffff;
+            padding: 12px 16px;
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon-badge {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .brand-title {
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+            color: #ffffff;
+            line-height: 1.2;
+        }
+
+        .brand-subtitle {
+            font-size: 11px;
+            color: #a7f3d0;
+            font-weight: 500;
+        }
+
+        .header-phone {
+            font-size: 11px;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 4px 8px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+            color: #a7f3d0;
+            white-space: nowrap;
+        }
+
+        /* Main Container */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Card Section Styles */
+        .card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 14px;
+            border: 1px solid var(--slate-200);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        /* Mandatory Details Box */
+        .cust-card {
+            background: #f0fdf4;
+            border: 1.5px solid #86efac;
+        }
+
+        .card-header-title {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .req-tag {
+            color: var(--rose-500);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        @media (min-width: 520px) {
+            .input-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .form-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--slate-700);
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 9px 12px;
+            background: #ffffff;
+            border: 1px solid var(--slate-300);
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            color: var(--slate-800);
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .input-field:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.15);
+        }
+
+        .input-field.error {
+            border-color: var(--rose-500) !important;
+            background-color: var(--rose-50) !important;
+            animation: shake 0.3s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-4px); }
+            40%, 80% { transform: translateX(4px); }
+        }
+
+        /* Search & Filter Bar */
+        .search-wrapper {
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            fill: #94a3b8;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 9px 32px;
+            background: var(--slate-50);
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius-md);
+            font-size: 12px;
+            outline: none;
+        }
+
+        .search-input:focus {
+            background: #ffffff;
+            border-color: var(--primary);
+        }
+
+        .clear-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 14px;
+            color: #94a3b8;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Horizontal Category Scroll */
+        .cat-scroll {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            scrollbar-width: none;
+        }
+
+        .cat-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cat-btn {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            white-space: nowrap;
+            background: var(--slate-100);
+            color: var(--slate-600);
+            border: 1px solid var(--slate-200);
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .cat-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 2px 4px rgba(4, 120, 87, 0.2);
+        }
+
+        /* Category Section Group */
+        .category-group {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--slate-200);
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            margin-bottom: 12px;
+        }
+
+        .group-header {
+            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+            color: #ffffff;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .group-count {
+            background: rgba(0, 0, 0, 0.25);
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            color: #a7f3d0;
+        }
+
+        /* Product Row Card */
+        .product-item {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--slate-100);
+        }
+
+        .product-item:last-child {
+            border-bottom: none;
+        }
+
+        .prod-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .sno-badge {
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--slate-600);
+            background: var(--slate-100);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid var(--slate-200);
+            min-width: 26px;
+            text-align: center;
+        }
+
+        .code-badge {
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            background: var(--primary-light);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid var(--primary-border);
+            font-mono: monospace;
+        }
+
+        .prod-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--slate-900);
+        }
+
+        /* Variant Size Chip & Stepper */
+        .variants-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .size-chip {
+            background: var(--slate-50);
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius-md);
+            padding: 4px 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.15s;
+        }
+
+        .size-chip.has-qty {
+            background: #ecfdf5 !important;
+            border-color: #34d399 !important;
+            box-shadow: 0 0 0 1px #34d399;
+        }
+
+        .size-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--slate-700);
+            background: rgba(0,0,0,0.05);
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        .price-label {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+
+        /* Touch Counter Controls */
+        .qty-stepper {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border: 1px solid var(--slate-300);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-left: 2px;
+        }
+
+        .step-btn {
+            width: 26px;
+            height: 26px;
+            border: none;
+            background: var(--slate-100);
+            color: var(--slate-800);
+            font-size: 14px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .step-btn.plus {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .step-btn:active {
+            opacity: 0.7;
+        }
+
+        .qty-val {
+            width: 24px;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--slate-900);
+        }
+
+        /* Floating Toast Message */
+        #toast {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-80px);
+            background: #0f172a;
+            color: #ffffff;
+            padding: 10px 16px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 100;
+            transition: all 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+            width: 90%;
+            max-width: 380px;
+            text-align: center;
+            justify-content: center;
+        }
+
+        #toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Sticky Bottom Order Bar */
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #0f172a;
+            color: #ffffff;
+            border-top: 3px solid #10b981;
+            padding: 10px 16px;
+            z-index: 50;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+        }
+
+        .bottom-bar-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .cart-summary {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-count {
+            font-size: 11px;
+            color: #34d399;
+            font-weight: 700;
+        }
+
+        .cart-total {
+            font-size: 16px;
+            font-weight: 900;
+            color: #ffffff;
+        }
+
+        .clear-cart-link {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 10px;
+            font-weight: 700;
+            text-decoration: underline;
+            padding: 3px 0 0;
+            margin: 0;
+            cursor: pointer;
+            align-self: flex-start;
+        }
+
+        .whatsapp-btn {
+            background: #10b981;
+            color: #022c22;
+            font-weight: 800;
+            font-size: 13px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            transition: all 0.2s;
+        }
+
+        .whatsapp-btn:active {
+            transform: scale(0.96);
+        }
+
+        .empty-state {
+            padding: 30px 16px;
+            text-align: center;
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--slate-200);
+            display: none;
+        }
+
+        .empty-state.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="brand-box">
+                <div class="icon-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a7f3d0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.4 19 2c1 2 2 4.1 2 9 0 4.9-4 9-9 9z"></path>
+                        <path d="M11 20v-7"></path>
+                    </svg>
+                </div>
+                <div>
+                    <div class="brand-title">AYURVEDIC MASTER PRICE LIST</div>
+                    <div class="brand-subtitle">Direct WhatsApp Order Portal</div>
+                </div>
+            </div>
+            <div class="header-phone">📞 +91 9425308540</div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Mandatory Customer Details Box -->
+        <div class="card cust-card" id="customerDetailsBox">
+            <div class="card-header-title">
+                <span>👤 Customer Order Info</span>
+                <span class="req-tag">* Required Fields</span>
+            </div>
+            <div class="input-grid">
+                <div class="form-group">
+                    <label class="form-label">Customer Name / Shop Name <span class="req-tag">*</span></label>
+                    <input type="text" id="custName" class="input-field" placeholder="e.g. Rahul Sharma / Medical Store" autocomplete="name" oninput="validateInput(this)">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">City <span class="req-tag">*</span></label>
+                    <input type="text" id="custCity" class="input-field" placeholder="e.g. Gwalior" autocomplete="address-level2" oninput="validateInput(this)">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Mobile Number <span class="req-tag">*</span></label>
+                    <input type="tel" id="custMobile" class="input-field" placeholder="e.g. 98260XXXXX" inputmode="numeric" autocomplete="tel" oninput="validateInput(this)">
+                </div>
+            </div>
+        </div>
+
+        <!-- Search & Category Filters -->
+        <div class="card">
+            <div class="search-wrapper">
+                <svg class="search-icon" viewBox="0 0 24 24">
+                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+                <input type="text" id="searchInput" class="search-input" onkeyup="filterProducts()" placeholder="🔍 Search product name, code (e.g. ADUC)...">
+                <button onclick="clearSearch()" id="clearSearchBtn" class="clear-btn">✕</button>
+            </div>
+
+            <div class="cat-scroll">
+                <button onclick="filterCategory('ALL')" data-cat="ALL" class="cat-btn active">All Items (174)</button>
+                <button onclick="filterCategory('SINGLE HERB CHURAN')" data-cat="SINGLE HERB CHURAN" class="cat-btn">Single Herb (98)</button>
+                <button onclick="filterCategory('PATIENTS CHURAN')" data-cat="PATIENTS CHURAN" class="cat-btn">Patients (9)</button>
+                <button onclick="filterCategory('SHASTROKT CHURAN')" data-cat="SHASTROKT CHURAN" class="cat-btn">Shastrokt (28)</button>
+                <button onclick="filterCategory('VATI')" data-cat="VATI" class="cat-btn">Vati (2)</button>
+                <button onclick="filterCategory('CAPSULE')" data-cat="CAPSULE" class="cat-btn">Capsule (30)</button>
+                <button onclick="filterCategory('PAK & AVALEH')" data-cat="PAK & AVALEH" class="cat-btn">Pak & Avaleh (1)</button>
+                <button onclick="filterCategory('TABLET')" data-cat="TABLET" class="cat-btn">Tablet (6)</button>
+            </div>
+        </div>
+
+        <!-- Dynamic Product Catalog -->
+        <div id="catalogContainer"></div>
+
+        <!-- Empty Search State -->
+        <div id="noResults" class="empty-state">
+            <p style="font-size: 14px; font-weight: 700; color: #475569;">No matching products found</p>
+            <p style="font-size: 12px; color: #94a3b8; margin-top: 4px;">Try checking your spelling or clear search filter</p>
+            <button onclick="clearSearch()" style="margin-top: 10px; padding: 6px 12px; background: #ecfdf5; color: #047857; font-size: 12px; font-weight: 700; border: 1px solid #a7f3d0; border-radius: 6px; cursor: pointer;">Reset Search</button>
+        </div>
+
+    </main>
+
+    <!-- Floating Notification Toast -->
+    <div id="toast">
+        <span id="toastIcon">⚠️</span>
+        <span id="toastText">Message</span>
+    </div>
+
+    <!-- Sticky Bottom WhatsApp Order Bar -->
+    <div class="bottom-bar">
+        <div class="bottom-bar-content">
+            <div class="cart-summary">
+                <span id="cartCount" class="cart-count">0 Items Selected</span>
+                <span id="cartTotal" class="cart-total">Total: ₹0.00</span>
+                <button type="button" onclick="clearCart()" class="clear-cart-link">Clear cart</button>
+            </div>
+            <button onclick="sendOrderViaWhatsApp()" class="whatsapp-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#022c22">
+                    <path d="M12.031 0c-6.627 0-12 5.373-12 12 0 2.159.57 4.26 1.654 6.105l-1.685 6.155 6.299-1.652c1.782.97 3.799 1.488 5.732 1.488 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12zm.009 22c-1.808 0-3.582-.486-5.132-1.408l-.368-.219-3.818 1.001 1.018-3.721-.241-.383c-1.015-1.611-1.551-3.486-1.551-5.412 0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.483-7.512c-.301-.15-1.777-.878-2.052-.978-.276-.099-.477-.15-.678.15-.201.3-.777.978-.953 1.178-.176.2-.351.225-.652.075-.301-.15-1.272-.469-2.424-1.496-.897-.798-1.502-1.785-1.678-2.086-.176-.301-.019-.464.131-.613.136-.135.301-.351.452-.527.15-.176.201-.3.301-.501.101-.2.05-.376-.025-.526-.075-.15-.678-1.631-.929-2.233-.244-.586-.492-.507-.678-.517-.176-.01-.376-.01-.577-.01s-.527.075-.803.376c-.276.3-1.054 1.03-1.054 2.513s1.079 2.913 1.229 3.114c.15.2 2.123 3.242 5.143 4.548.718.311 1.279.497 1.716.636.721.23 1.377.197 1.897.12.58-.086 1.777-.727 2.028-1.429.251-.702.251-1.303.176-1.429-.075-.126-.276-.201-.577-.351z"/>
+                </svg>
+                <span>Send Order via WhatsApp</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // TARGET PHONE NUMBER FOR WHATSAPP DIRECT ORDERING
+        const WHATSAPP_PHONE = "919425308540";
+        const STORAGE_KEY = "ayurvedicOrderState_v1";
+
+        const PRODUCTS = [
+            // --- SINGLE HERB CHURAN ---
+            { sno: "1", code: "ADUC", name: "Adusa Churna", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 110.00 }, { size: "500 GM", price: 495.00 }, { size: "1 KG.", price: 935.00 }] },
+            { sno: "2", code: "ATIC", name: "ATIS Churan", category: "SINGLE HERB CHURAN", variants: [{ size: "25 GM", price: 110.00 }, { size: "100 GM", price: 410.00 }, { size: "500 GM", price: 1845.00 }, { size: "1 KG.", price: 3485.00 }] },
+            { sno: "3", code: "AHC", name: "AMBAHALDI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 80.00 }, { size: "100 GM", price: 140.00 }, { size: "500 GM", price: 630.00 }] },
+            { sno: "4", code: "ASC", name: "ASAGANDH CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 120.00 }, { size: "100 GM", price: 180.00 }, { size: "500 GM", price: 810.00 }, { size: "1 KG", price: 1530.00 }] },
+            { sno: "5", code: "ARTC", name: "ARITHA (RITHA) CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+            { sno: "6", code: "ACC", name: "ARJUNCHHAL CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 90.00 }, { size: "500 GM", price: 405.00 }, { size: "1 KG", price: 765.00 }] },
+            { sno: "7", code: "AKC", name: "AKARKARA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "25 GM", price: 250.00 }, { size: "50 GM", price: 450.00 }, { size: "100 GM", price: 850.00 }] },
+            { sno: "8", code: "ASCC", name: "ASHOKCHAL CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+            { sno: "9", code: "AYC", name: "AJWAYAN CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 130.00 }, { size: "500 GM", price: 585.00 }, { size: "1 KG", price: 1105.00 }] },
+            { sno: "10", code: "ALC", name: "ANWALA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 90.00 }, { size: "500 GM", price: 405.00 }, { size: "1 KG", price: 765.00 }] },
+            { sno: "11", code: "ANMC", name: "ANANTMOOL CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 90.00 }, { size: "250 GM", price: 405.00 }, { size: "500 GM", price: 765.00 }] },
+            { sno: "12", code: "BHC", name: "BAHEDA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 90.00 }, { size: "500 GM", price: 405.00 }, { size: "1 KG", price: 765.00 }] },
+            { sno: "13", code: "BAC", name: "BHUMI ANWALA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 110.00 }, { size: "500 GM", price: 495.00 }, { size: "1 KG", price: 935.00 }] },
+            { sno: "14", code: "BC", name: "BRAHMI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 150.00 }, { size: "500 GM", price: 675.00 }, { size: "1 KG", price: 1275.00 }] },
+            { sno: "15", code: "BGC", name: "BHRINGARAJ CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+            { sno: "16", code: "BMC", name: "BAMULCHAL CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+            { sno: "17", code: "BPC", name: "BELPATRA CHURN A", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 90.00 }, { size: "500 GM", price: 405.00 }, { size: "1 KG", price: 765.00 }] },
+            { sno: "18", code: "BVC", name: "BAVACHI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 110.00 }, { size: "500 GM", price: 495.00 }, { size: "1 KG", price: 935.00 }] },
+            { sno: "19", code: "BPHC", name: "BELPHAL CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 90.00 }, { size: "500 GM", price: 405.00 }, { size: "1 KG", price: 765.00 }] },
+            { sno: "20", code: "BMPC", name: "BAMOOL PHALI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 110.00 }, { size: "500 GM", price: 495.00 }, { size: "1 KG", price: 935.00 }] },
+            { sno: "21", code: "CPC", name: "CHOPCHINI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "25 GM", price: 200.00 }, { size: "100 GM", price: 735.00 }, { size: "500 GM", price: 3360.00 }] },
+            { sno: "22", code: "CMC", name: "CHITRAKMOOL CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+            { sno: "23", code: "CC", name: "CHANDAN CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "25 GM", price: 125.00 }, { size: "250 GM", price: 1125.00 }, { size: "500 GM", price: 2125.00 }] },
+            { sno: "24", code: "CYCN", name: "CHIRAYATA CHURNA (NEPALI)", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 200.00 }, { size: "250 GM", price: 900.00 }, { size: "500 GM", price: 1700.00 }] },
+            { sno: "25", code: "CYCD", name: "CHIRAYATA CHURNA (DESI)", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+            { sno: "26", code: "CKC", name: "CHHAL KUDA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+            { sno: "27", code: "DCC", name: "DALCHINI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "25 GM", price: 50.00 }, { size: "100 GM", price: 180.00 }, { size: "500 GM", price: 810.00 }] },
+            { sno: "28", code: "DDC", name: "DEVDARU CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+            { sno: "29", code: "DHC", name: "DARUHALDI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+            { sno: "30", code: "GMC", name: "GUDMAR CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 110.00 }, { size: "500 GM", price: 495.00 }, { size: "1 KG", price: 935.00 }] },
+            { sno: "31", code: "GKCC", name: "GOKHARU CHURNA (SMALL)", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 120.00 }, { size: "500 GM", price: 540.00 }, { size: "1 KG", price: 1020.00 }] },
+            { sno: "32", code: "GLC", name: "GILOYA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+            { sno: "33", code: "GKCB", name: "GOKHARU CHURNA (BIG)", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 160.00 }, { size: "500 GM", price: 720.00 }, { size: "1 KG", price: 1360.00 }] },
+            { sno: "34", code: "GPC", name: "GULABPATI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 80.00 }, { size: "500 GM", price: 720.00 }, { size: "1 KG", price: 1360.00 }] },
+            { sno: "35", code: "GRMC", name: "GORAKH MUNDI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 80.00 }, { size: "500 GM", price: 720.00 }, { size: "1 KG", price: 1360.00 }] },
+            { sno: "36", code: "GC", name: "GUDHAL CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "25 GM", price: 70.00 }, { size: "250 GM", price: 630.00 }, { size: "500 GM", price: 1190.00 }] },
+            { sno: "37", code: "HCC", name: "HARDE CHURNA (SMALL)", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 120.00 }, { size: "500 GM", price: 540.00 }, { size: "1 KG", price: 1020.00 }] },
+            { sno: "38", code: "HCB", name: "HARDE CHURNA (BIG)", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+            { sno: "39", code: "HRC", name: "HARIDRA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 60.00 }, { size: "500 GM", price: 540.00 }, { size: "1 KG", price: 1020.00 }] },
+            { sno: "40", code: "IC", name: "INDIGO CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 70.00 }, { size: "500 GM", price: 630.00 }, { size: "1 KG", price: 1190.00 }] },
+            { sno: "41", code: "IJC", name: "INDERJAV CHURNA (कड़वा)", category: "SINGLE HERB CHURAN", variants: [{ size: "25 GM", price: 70.00 }, { size: "250 GM", price: 630.00 }, { size: "500 GM", price: 1190.00 }] },
+            { sno: "42", code: "JGC", name: "JAMUN GUTHALI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+            { sno: "43", code: "JMC", name: "JATAMASI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 250.00 }, { size: "250 GM", price: 1125.00 }, { size: "500 GM", price: 2125.00 }] },
+            { sno: "44", code: "KBC", name: "KAUNCH BEEJ CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 110.00 }, { size: "500 GM", price: 495.00 }, { size: "1 KG", price: 935.00 }] },
+            { sno: "45", code: "KJC", name: "KULANJAN CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 70.00 }, { size: "500 GM", price: 630.00 }, { size: "1 KG", price: 1190.00 }] },
+            { sno: "46", code: "KRC", name: "KARELA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 110.00 }, { size: "500 GM", price: 495.00 }, { size: "1 KG", price: 935.00 }] },
+            { sno: "47", code: "KSC", name: "KASNI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 70.00 }, { size: "500 GM", price: 630.00 }, { size: "1 KG", price: 1190.00 }] },
+            { sno: "48", code: "KTC", name: "KUTKI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 500.00 }, { size: "250 GM", price: 2250.00 }, { size: "500 GM", price: 4250.00 }] },
+            { sno: "49", code: "KMC", name: "KALIMIRCH CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 300.00 }, { size: "500 GM", price: 1350.00 }, { size: "1 KG", price: 2550.00 }] },
+            { sno: "50", code: "KPC", name: "KAIYPHAL CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+            { sno: "51", code: "KAMC", name: "KALIMUSLI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 160.00 }, { size: "250 GM", price: 720.00 }, { size: "500 GM", price: 1360.00 }] },
+            { sno: "52", code: "KC", name: "KALONJI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 80.00 }, { size: "500 GM", price: 720.00 }, { size: "1 KG", price: 1360.00 }] },
+            { sno: "53", code: "KJRC", name: "KAALI JEERI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 160.00 }, { size: "500 GM", price: 1440.00 }, { size: "1 KG", price: 2720.00 }] },
+            { sno: "54", code: "LDC", name: "LODHRA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 70.00 }, { size: "500 GM", price: 630.00 }, { size: "1 KG", price: 1190.00 }] },
+            { sno: "55", code: "LC", name: "LAKSHA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 200.00 }, { size: "250 GM", price: 900.00 }, { size: "500 GM", price: 1700.00 }] },
+            { sno: "56", code: "LSC", name: "LAHSUN CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 70.00 }, { size: "500 GM", price: 630.00 }, { size: "1 KG", price: 1190.00 }] },
+            { sno: "57", code: "LCC", name: "LALCHANDAN CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "25 GM", price: 200.00 }, { size: "100 GM", price: 720.00 }, { size: "500 GM", price: 3400.00 }] },
+            { sno: "58", code: "UC", name: "LAJWANTI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "25 GM", price: 100.00 }, { size: "500 GM", price: 1800.00 }, { size: "1 KG", price: 3400.00 }] },
+            { sno: "59", code: "MDC", name: "METHIDANA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+            { sno: "60", code: "MJC", name: "MANJISHTHA CHURNA (Erani)", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 250.00 }, { size: "250 GM", price: 1125.00 }, { size: "500 GM", price: 2125.00 }] },
+            { sno: "61", code: "MYC", name: "MADHUYESTHI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 100.00 }, { size: "100 GM", price: 170.00 }, { size: "500 GM", price: 760.00 }, { size: "1 KG", price: 1445.00 }] },
+            { sno: "62", code: "MLC", name: "MORINGA PATTI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 130.00 }, { size: "500 GM", price: 585.00 }, { size: "1 KG", price: 1105.00 }] },
+            { sno: "63", code: "NMC", name: "NAGARMOTHA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+            { sno: "64", code: "NSC", name: "NISHOTH CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+            { sno: "65", code: "NPC", name: "NEEM PATTI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 90.00 }, { size: "500 GM", price: 405.00 }, { size: "1 KG", price: 765.00 }] },
+            { sno: "66", code: "NKC", name: "NAG KESAR CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 250.00 }, { size: "250 GM", price: 1125.00 }, { size: "500 GM", price: 2125.00 }] },
+            { sno: "67", code: "PDC", name: "PODINA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 80.00 }, { size: "500 GM", price: 720.00 }, { size: "1 KG", price: 1360.00 }] },
+            { sno: "68", code: "PNDC", name: "PANEERDODHI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 80.00 }, { size: "500 GM", price: 720.00 }, { size: "1 KG", price: 1360.00 }] },
+            { sno: "69", code: "NGBC", name: "NIRGUNDI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 100.00 }, { size: "500 GM", price: 900.00 }, { size: "1 KG", price: 1700.00 }] },
+            { sno: "70", code: "PMC", name: "PUNARNAVAMOOL CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 120.00 }, { size: "500 GM", price: 540.00 }, { size: "1 KG", price: 1020.00 }] },
+            { sno: "71", code: "PJC", name: "PUTRA JIVAK CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "25 GM", price: 100.00 }, { size: "500 GM", price: 1800.00 }, { size: "1 KG", price: 3400.00 }] },
+            { sno: "72", code: "PLC", name: "PI PALI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "25 GM", price: 100.00 }, { size: "50 GM", price: 180.00 }, { size: "100 GM", price: 1620.00 }] },
+            { sno: "73", code: "PBC", name: "PASHAN BEDH CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 120.00 }, { size: "250 GM", price: 540.00 }, { size: "500 GM", price: 1020.00 }] },
+            { sno: "74", code: "PPLC", name: "PIPALAMOOL CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 120.00 }, { size: "500 GM", price: 1080.00 }, { size: "1 KG", price: 2040.00 }] },
+            { sno: "75", code: "RCC", name: "REWANCHINI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 120.00 }, { size: "500 GM", price: 540.00 }, { size: "1 KG", price: 1020.00 }] },
+            { sno: "76", code: "SAMC", name: "SAMERMUSLI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 100.00 }, { size: "500 GM", price: 900.00 }, { size: "1 KG", price: 1700.00 }] },
+            { sno: "77", code: "SC", name: "SANFCHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 80.00 }, { size: "500 GM", price: 720.00 }, { size: "1 KG", price: 1360.00 }] },
+            { sno: "78", code: "SLC", name: "SOMLATA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 90.00 }, { size: "500 GM", price: 810.00 }, { size: "1 KG", price: 1530.00 }] },
+            { sno: "79", code: "SLBC", name: "SHIVLINGI BEEJ CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "25 GM", price: 180.00 }, { size: "500 GM", price: 3240.00 }, { size: "1 KG", price: 6120.00 }] },
+            { sno: "80", code: "SNC", name: "SAN AY PATTI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 110.00 }, { size: "500 GM", price: 495.00 }, { size: "1 KG", price: 935.00 }] },
+            { sno: "81", code: "SNKC", name: "SHANKHA PUSHPI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 110.00 }, { size: "500 GM", price: 495.00 }, { size: "1 KG", price: 935.00 }] },
+            { sno: "82", code: "SKC", name: "SHIKAKAI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+            { sno: "83", code: "SUNC", name: "SHUNTHI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 140.00 }, { size: "500 GM", price: 630.00 }, { size: "1 KG", price: 1190.00 }] },
+            { sno: "84", code: "SGC", name: "SARPGANDHA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 220.00 }, { size: "250 GM", price: 990.00 }, { size: "500 GM", price: 1870.00 }] },
+            { sno: "85", code: "SMC", name: "SAFED MUSALI CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 295.00 }, { size: "100 GM", price: 530.00 }, { size: "250 GM", price: 1250.00 }] },
+            { sno: "86", code: "SPC", name: "SALABPANJA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "25 GM", price: 800.00 }, { size: "250 GM", price: 7200.00 }, { size: "500 GM", price: 13600.00 }] },
+            { sno: "87", code: "SVCN", name: "SITAWAR CHURNA (NEPALI)", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 240.00 }, { size: "250 GM", price: 1080.00 }, { size: "500 GM", price: 2040.00 }] },
+            { sno: "88", code: "SVCD", name: "SITAWAR CHURNA (DESI)", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 140.00 }, { size: "500 GM", price: 630.00 }, { size: "1 KG", price: 1190.00 }] },
+            { sno: "89", code: "TBC", name: "TUMBRU BEEJ CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 250.00 }, { size: "250 GM", price: 1125.00 }, { size: "500 GM", price: 2125.00 }] },
+            { sno: "90", code: "TMC", name: "TALMAKHANA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 250.00 }, { size: "250 GM", price: 1125.00 }, { size: "500 GM", price: 2125.00 }] },
+            { sno: "91", code: "TC", name: "TEJPATTA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+            { sno: "92", code: "TPC", name: "TUSLI PATRA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 120.00 }, { size: "500 GM", price: 540.00 }, { size: "1 KG", price: 1020.00 }] },
+            { sno: "93", code: "VC", name: "VACHA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 110.00 }, { size: "500 GM", price: 495.00 }, { size: "1 KG", price: 935.00 }] },
+            { sno: "94", code: "VJC", name: "VIJAYSAR CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+            { sno: "95", code: "VSLC", name: "VANCHALOSAN CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "50 GM", price: 60.00 }, { size: "500 GM", price: 540.00 }, { size: "1 KG", price: 1020.00 }] },
+            { sno: "96", code: "WC", name: "VAIVIDANG CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 270.00 }, { size: "500 GM", price: 1215.00 }, { size: "1 KG", price: 2295.00 }] },
+            { sno: "97", code: "VKC", name: "VIDARI KAND CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 110.00 }, { size: "500 GM", price: 495.00 }, { size: "1 KG", price: 935.00 }] },
+            { sno: "98", code: "VDC", name: "VIDHARA CHURNA", category: "SINGLE HERB CHURAN", variants: [{ size: "100 GM", price: 100.00 }, { size: "500 GM", price: 450.00 }, { size: "1 KG", price: 850.00 }] },
+
+            // --- PATIENTS CHURAN ---
+            { sno: "99", code: "AC", name: "AMBIKALP CHURNA", category: "PATIENTS CHURAN", variants: [{ size: "50 GM", price: 150.00 }] },
+            { sno: "100", code: "EZC", name: "EZEE CHURNA", category: "PATIENTS CHURAN", variants: [{ size: "100 GM", price: 110.00 }] },
+            { sno: "101", code: "JC", name: "JOSH CHURNA", category: "PATIENTS CHURAN", variants: [{ size: "100 GM", price: 250.00 }, { size: "500 GM", price: 1060.00 }] },
+            { sno: "102", code: "EGFC", name: "EZEE GAS FREE CHURAN", category: "PATIENTS CHURAN", variants: [{ size: "25 GM", price: 60.00 }, { size: "100 GM", price: 220.00 }, { size: "400 GM", price: 250.00 }] },
+            { sno: "103", code: "RNC", name: "RAJASHAHI NAVRATAN CHATNI", category: "PATIENTS CHURAN", variants: [{ size: "50 GM", price: 100.00 }] },
+            { sno: "104", code: "MTC", name: "MAGIC TEETH CARE", category: "PATIENTS CHURAN", variants: [{ size: "100 GM", price: 130.00 }] },
+            { sno: "105", code: "USC", name: "UDAR SHUDHI CHURNA", category: "PATIENTS CHURAN", variants: [{ size: "100 GM", price: 130.00 }] },
+            { sno: "106", code: "DIB", name: "DIABAJOSH (30 CAP)", category: "PATIENTS CHURAN", variants: [{ size: "30 CAP.", price: 350.00 }] },
+            { sno: "107", code: "DIB", name: "DIABAJOSH (60 CAP)", category: "PATIENTS CHURAN", variants: [{ size: "60 CAP.", price: 600.00 }] },
+
+            // --- SHASTROKT CHURAN ---
+            { sno: "108", code: "ASLC", name: "ASHTANG LAVAN CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "30 GM", price: 90.00 }, { size: "100 GM", price: 280.00 }, { size: "500 GM", price: 1260.00 }, { size: "1 KG.", price: 2380.00 }] },
+            { sno: "109", code: "ANIC", name: "AVIPITTKAR CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "50 GM", price: 100.00 }, { size: "100 GM", price: 180.00 }, { size: "500 GM", price: 810.00 }, { size: "1 KG", price: 1530.00 }] },
+            { sno: "110", code: "AJMC", name: "AJMODADI CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "100 GM", price: 130.00 }, { size: "500 GM", price: 585.00 }, { size: "1 KG", price: 1105.00 }] },
+            { sno: "111", code: "ASGC", name: "ASHWGANDHADI CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "100 GM", price: 140.00 }, { size: "500 GM", price: 630.00 }, { size: "1 KG", price: 1190.00 }] },
+            { sno: "112", code: "BCC", name: "BAL CHATURBHADRIKA", category: "SHASTROKT CHURAN", variants: [{ size: "30 GM", price: 130.00 }, { size: "100 GM", price: 420.00 }, { size: "500 GM", price: 1890.00 }, { size: "1 KG.", price: 3570.00 }] },
+            { sno: "113", code: "CTC", name: "CHATURJAT CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "30 GM", price: 110.00 }, { size: "100 GM", price: 340.00 }, { size: "500 GM", price: 1530.00 }, { size: "1 KG.", price: 2890.00 }] },
+            { sno: "114", code: "DPC", name: "DHATUPAUSHTIK CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "100 GM", price: 260.00 }, { size: "500 GM", price: 1170.00 }, { size: "1 KG", price: 2210.00 }] },
+            { sno: "115", code: "DMC", name: "DADIMASHTAK CHURAN", category: "SHASTROKT CHURAN", variants: [{ size: "50 GM", price: 120.00 }, { size: "100 GM", price: 220.00 }, { size: "500 GM", price: 990.00 }, { size: "1 KG.", price: 1870.00 }] },
+            { sno: "116", code: "DSC", name: "DASHNSANSKAR CHURAN", category: "SHASTROKT CHURAN", variants: [{ size: "50 GM", price: 100.00 }, { size: "100 GM", price: 180.00 }, { size: "500 GM", price: 810.00 }, { size: "1 KG.", price: 1530.00 }] },
+            { sno: "117", code: "EC", name: "ELADI CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "30 GM", price: 90.00 }, { size: "100 GM", price: 280.00 }, { size: "500 GM", price: 1260.00 }, { size: "1 KG.", price: 2380.00 }] },
+            { sno: "118", code: "GKDC", name: "GOKSHURADI CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "100 GM", price: 140.00 }, { size: "500 GM", price: 630.00 }, { size: "1 KG", price: 1190.00 }] },
+            { sno: "119", code: "HIGC", name: "HINGVASHTAK CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "50 GM", price: 130.00 }, { size: "100 GM", price: 230.00 }, { size: "500 GM", price: 1035.00 }, { size: "1 KG", price: 1955.00 }] },
+            { sno: "120", code: "KDC", name: "KAMDEV CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "100 GM", price: 140.00 }, { size: "500 GM", price: 630.00 }, { size: "1 KG", price: 1190.00 }] },
+            { sno: "121", code: "KRNC", name: "KRISHNADI CHURAN", category: "SHASTROKT CHURAN", variants: [{ size: "30 GM", price: 120.00 }, { size: "100 GM", price: 370.00 }, { size: "500 GM", price: 1665.00 }, { size: "1 KG", price: 3145.00 }] },
+            { sno: "122", code: "LBC", name: "LAVANBHASKAR CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "50 GM", price: 60.00 }, { size: "100 GM", price: 110.00 }, { size: "500 GM", price: 495.00 }, { size: "1 KG.", price: 935.00 }] },
+            { sno: "123", code: "MDDC", name: "MADHUMEHADAMAN CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "100 GM", price: 140.00 }, { size: "500 GM", price: 630.00 }, { size: "1 KG", price: 1190.00 }] },
+            { sno: "124", code: "PCC", name: "PANCHASKAR CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "100 GM", price: 130.00 }, { size: "500 GM", price: 585.00 }, { size: "1 KG", price: 1105.00 }] },
+            { sno: "125", code: "PSC", name: "PANCHSAM CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "30 GM", price: 70.00 }, { size: "100 GM", price: 210.00 }, { size: "500 GM", price: 950.00 }, { size: "1 KG.", price: 1790.00 }] },
+            { sno: "126", code: "PKC", name: "PANCHKOL CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "30 GM", price: 70.00 }, { size: "100 GM", price: 210.00 }, { size: "500 GM", price: 950.00 }, { size: "1 KG.", price: 1790.00 }] },
+            { sno: "127", code: "SITC", name: "SITOPLADI CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "25 GM", price: 70.00 }, { size: "50 GM", price: 120.00 }, { size: "100 GM", price: 210.00 }, { size: "500 GM", price: 945.00 }, { size: "1 KG", price: 1785.00 }] },
+            { sno: "128", code: "SKPC", name: "SHIVAKSHARPACHAN CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "100 GM", price: 130.00 }, { size: "500 GM", price: 585.00 }, { size: "1 KG", price: 1105.00 }] },
+            { sno: "129", code: "SWVC", name: "SWADISHTA VIRECHAN CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "100 GM", price: 135.00 }, { size: "500 GM", price: 610.00 }, { size: "1 KG", price: 1150.00 }] },
+            { sno: "130", code: "SWC", name: "SARSWAT CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "30 GM", price: 120.00 }, { size: "100 GM", price: 370.00 }, { size: "500 GM", price: 1665.00 }, { size: "1 KG.", price: 3145.00 }] },
+            { sno: "131", code: "SWC", name: "SRINGYADI CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "30 GM", price: 120.00 }, { size: "100 GM", price: 370.00 }, { size: "500 GM", price: 1665.00 }, { size: "1 KG.", price: 3145.00 }] },
+            { sno: "131A", code: "TKC", name: "TRIKATU CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "25 GM", price: 70.00 }, { size: "50 GM", price: 120.00 }, { size: "100 GM", price: 200.00 }, { size: "500 GM", price: 900.00 }, { size: "1 KG", price: 1700.00 }] },
+            { sno: "132", code: "TALC", name: "TALISADI CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "50 GM", price: 90.00 }, { size: "100 GM", price: 160.00 }, { size: "500 GM", price: 720.00 }, { size: "1 KG", price: 1360.00 }] },
+            { sno: "133", code: "TRIC", name: "TRIPHALA CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "100 GM", price: 70.00 }, { size: "500 GM", price: 220.00 }, { size: "1 KG", price: 400.00 }] },
+            { sno: "134", code: "VNC", name: "VAISHVANAR CHURNA", category: "SHASTROKT CHURAN", variants: [{ size: "30 GM", price: 70.00 }, { size: "100 GM", price: 210.00 }, { size: "500 GM", price: 945.00 }, { size: "1 KG.", price: 1785.00 }] },
+
+            // --- VATI ---
+            { sno: "135", code: "GGV", name: "GILOY GHAN VATI", category: "VATI", variants: [{ size: "60 TAB", price: 175.00 }, { size: "1000 TAB", price: 2500.00 }] },
+            { sno: "136", code: "SMJV", name: "SANJEEVANI VATI", category: "VATI", variants: [{ size: "5 GM", price: 45.00 }, { size: "10 GM", price: 80.00 }, { size: "100 GM", price: 720.00 }, { size: "500 GM", price: 3060.00 }, { size: "1 KG", price: 5760.00 }] },
+
+            // --- CAPSULE ---
+            { sno: "137", code: "ASC", name: "ASHWAGANDHA", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+            { sno: "138", code: "ALC", name: "ANWALA", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+            { sno: "139", code: "ACC", name: "ARJUN", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+            { sno: "140", code: "BC", name: "BRAHMI", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+            { sno: "141", code: "BPC", name: "BAEL", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+            { sno: "142", code: "CYTC", name: "CHIRAYTA", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 200.00 }] },
+            { sno: "143", code: "DCC", name: "DALCHINI", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 200.00 }] },
+            { sno: "144", code: "GKSC", name: "GOKSHURA (SMALL)", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+            { sno: "145", code: "GKSC", name: "GOKSHURA (BIG)", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+            { sno: "146", code: "GC", name: "GUDUCHI", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+            { sno: "147", code: "HDC", name: "HADJOD", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+            { sno: "148", code: "HRC", name: "HARIDRA", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+            { sno: "149", code: "JGC", name: "JAMUN GUTHLI", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 220.00 }] },
+            { sno: "150", code: "KCC", name: "KAPIKACHHU", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+            { sno: "151", code: "KRC", name: "KARELA", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+            { sno: "152", code: "LSC", name: "LAHSUNA", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+            { sno: "153", code: "MSC", name: "MESHA SHRINGI", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+            { sno: "154", code: "NC", name: "NEEM", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 200.00 }] },
+            { sno: "155", code: "PMC", name: "PUNARNAVA", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 200.00 }] },
+            { sno: "156", code: "SC", name: "SINGRU", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+            { sno: "157", code: "SGC", name: "SHUDDHA GUGGULA", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 200.00 }] },
+            { sno: "158", code: "SBC", name: "SHATAVARI", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+            { sno: "159", code: "SMC", name: "SAFEDMUSLI", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 250.00 }] },
+            { sno: "160", code: "SJC", name: "SHILAJEET", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 200.00 }] },
+            { sno: "161", code: "SHC", name: "SHALLAKI", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 200.00 }] },
+            { sno: "162", code: "TIPC", name: "TRIPHALA", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+            { sno: "163", code: "TLC", name: "TULSI", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+            { sno: "164", code: "TGC", name: "TAGRA", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+            { sno: "165", code: "VJC", name: "VIJAYSAR", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 200.00 }] },
+            { sno: "166", code: "YMT", name: "YASHTIMADHU", category: "CAPSULE", variants: [{ size: "30 CAP.", price: 180.00 }] },
+
+            // --- PAK & AVALEH ---
+            { sno: "167", code: "BDP", name: "BADAM PAK", category: "PAK & AVALEH", variants: [{ size: "100 GM", price: 499.00 }] },
+
+            // --- TABLET ---
+            { sno: "168", code: "AST", name: "ASHWAGANDHA", category: "TABLET", variants: [{ size: "30 TAB", price: 200.00 }] },
+            { sno: "169", code: "GKHT", name: "GOKSHURA", category: "TABLET", variants: [{ size: "30 TAB", price: 220.00 }] },
+            { sno: "170", code: "KCT", name: "KAPIKACHHU", category: "TABLET", variants: [{ size: "30 TAB", price: 180.00 }] },
+            { sno: "171", code: "PMT", name: "PUNARNAVA", category: "TABLET", variants: [{ size: "30 TAB", price: 220.00 }] },
+            { sno: "172", code: "SVT", name: "SHATAVARI", category: "TABLET", variants: [{ size: "30 TAB", price: 200.00 }] },
+            { sno: "173", code: "YST", name: "YASHTIMADHU", category: "TABLET", variants: [{ size: "30 TAB", price: 180.00 }] }
+        ];
+
+        // Categories list in exact pamphlet order
+        const CATEGORIES = [
+            'SINGLE HERB CHURAN',
+            'PATIENTS CHURAN',
+            'SHASTROKT CHURAN',
+            'VATI',
+            'CAPSULE',
+            'PAK & AVALEH',
+            'TABLET'
+        ];
+
+        const cart = {};
+        let activeCategory = 'ALL';
+        let searchQuery = '';
+
+        // Immediate Execution & Load Handlers
+        function initApp() {
+            restoreState();
+            renderCatalog();
+            updateBottomTotals();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
+        window.onload = initApp;
+
+        // Restore cart + customer details saved in this browser (survives the
+        // page reloading in the background while WhatsApp is open on mobile).
+        function restoreState() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return;
+                const saved = JSON.parse(raw);
+
+                Object.keys(cart).forEach(k => delete cart[k]);
+                if (saved.cart) {
+                    Object.keys(saved.cart).forEach(k => {
+                        cart[k] = saved.cart[k];
+                    });
+                }
+
+                const nameInput = document.getElementById('custName');
+                const cityInput = document.getElementById('custCity');
+                const mobileInput = document.getElementById('custMobile');
+                if (nameInput && saved.custName) nameInput.value = saved.custName;
+                if (cityInput && saved.custCity) cityInput.value = saved.custCity;
+                if (mobileInput && saved.custMobile) mobileInput.value = saved.custMobile;
+            } catch (e) {
+                // Corrupt or unavailable storage (private browsing) — start fresh
+            }
+        }
+
+        function saveState() {
+            try {
+                const nameInput = document.getElementById('custName');
+                const cityInput = document.getElementById('custCity');
+                const mobileInput = document.getElementById('custMobile');
+                localStorage.setItem(STORAGE_KEY, JSON.stringify({
+                    cart,
+                    custName: nameInput ? nameInput.value : '',
+                    custCity: cityInput ? cityInput.value : '',
+                    custMobile: mobileInput ? mobileInput.value : ''
+                }));
+            } catch (e) {
+                // Storage unavailable — order still works, just won't survive a reload
+            }
+        }
+
+        // Render Product Catalog
+        function renderCatalog() {
+            const container = document.getElementById('catalogContainer');
+            const noResults = document.getElementById('noResults');
+            if (!container) return;
+
+            container.innerHTML = '';
+            let totalRendered = 0;
+
+            CATEGORIES.forEach(catName => {
+                if (activeCategory !== 'ALL' && activeCategory !== catName) return;
+
+                const catProducts = PRODUCTS.map((p, pIdx) => ({ product: p, pIdx }))
+                    .filter(({ product }) => {
+                        if (product.category !== catName) return false;
+                        if (!searchQuery) return true;
+
+                        const q = searchQuery.toLowerCase();
+                        return product.name.toLowerCase().includes(q) ||
+                               product.code.toLowerCase().includes(q) ||
+                               product.sno.toLowerCase().includes(q) ||
+                               product.variants.some(v => v.size.toLowerCase().includes(q));
+                    });
+
+                if (catProducts.length === 0) return;
+                totalRendered += catProducts.length;
+
+                // Create Category Section Group
+                const groupDiv = document.createElement('div');
+                groupDiv.className = 'category-group';
+
+                let groupHTML = `
+                    <div class="group-header">
+                        <span>${catName}</span>
+                        <span class="group-count">${catProducts.length} Items</span>
+                    </div>
+                    <div>
+                `;
+
+                catProducts.forEach(({ product, pIdx }) => {
+                    groupHTML += `
+                        <div class="product-item">
+                            <div class="prod-header">
+                                <span class="sno-badge">${product.sno}</span>
+                                <span class="code-badge">${product.code}</span>
+                                <span class="prod-title">${product.name}</span>
+                            </div>
+                            <div class="variants-grid">
+                                ${product.variants.map((v, vIdx) => {
+                                    const key = `p${pIdx}_v${vIdx}`;
+                                    const qty = cart[key] ? cart[key].qty : 0;
+                                    const hasClass = qty > 0 ? 'has-qty' : '';
+
+                                    return `
+                                        <div id="chip_${key}" class="size-chip ${hasClass}">
+                                            <span class="size-label">${v.size}</span>
+                                            <span class="price-label">₹${v.price.toFixed(2)}</span>
+                                            <div class="qty-stepper">
+                                                <button type="button" class="step-btn" onclick="updateQuantity(${pIdx}, ${vIdx}, -1)">-</button>
+                                                <span id="qty_${key}" class="qty-val">${qty}</span>
+                                                <button type="button" class="step-btn plus" onclick="updateQuantity(${pIdx}, ${vIdx}, 1)">+</button>
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                groupHTML += `</div>`;
+                groupDiv.innerHTML = groupHTML;
+                container.appendChild(groupDiv);
+            });
+
+            if (totalRendered === 0 && noResults) {
+                noResults.classList.add('show');
+            } else if (noResults) {
+                noResults.classList.remove('show');
+            }
+        }
+
+        function updateQuantity(pIdx, vIdx, delta) {
+            const key = `p${pIdx}_v${vIdx}`;
+            const product = PRODUCTS[pIdx];
+            const variant = product.variants[vIdx];
+
+            if (!cart[key]) {
+                cart[key] = {
+                    pIdx,
+                    vIdx,
+                    sno: product.sno,
+                    code: product.code,
+                    name: product.name,
+                    size: variant.size,
+                    price: variant.price,
+                    qty: 0
+                };
+            }
+
+            cart[key].qty += delta;
+
+            if (cart[key].qty <= 0) {
+                delete cart[key];
+            }
+
+            // Direct DOM Updates for Maximum Speed on Mobile
+            const qtySpan = document.getElementById(`qty_${key}`);
+            const chipDiv = document.getElementById(`chip_${key}`);
+            const currentQty = cart[key] ? cart[key].qty : 0;
+
+            if (qtySpan) qtySpan.innerText = currentQty;
+
+            if (chipDiv) {
+                if (currentQty > 0) {
+                    chipDiv.classList.add('has-qty');
+                } else {
+                    chipDiv.classList.remove('has-qty');
+                }
+            }
+
+            updateBottomTotals();
+            saveState();
+        }
+
+        function updateBottomTotals() {
+            let totalItems = 0;
+            let grandTotal = 0;
+
+            for (const key in cart) {
+                if (cart[key].qty > 0) {
+                    totalItems += cart[key].qty;
+                    grandTotal += (cart[key].qty * cart[key].price);
+                }
+            }
+
+            const cartCount = document.getElementById('cartCount');
+            const cartTotal = document.getElementById('cartTotal');
+
+            if (cartCount) cartCount.innerText = `${totalItems} Item${totalItems !== 1 ? 's' : ''} Selected`;
+            if (cartTotal) cartTotal.innerText = `Total: ₹${grandTotal.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        }
+
+        function clearCart() {
+            const totalItems = Object.values(cart).reduce((sum, item) => sum + item.qty, 0);
+            if (totalItems === 0) return;
+            if (!confirm('Clear all selected items from your order?')) return;
+
+            Object.keys(cart).forEach(k => delete cart[k]);
+            renderCatalog();
+            updateBottomTotals();
+            saveState();
+            showToast('🗑️ Cart cleared', 'info');
+        }
+
+        function validateInput(inputElem) {
+            if (inputElem.value.trim() !== '') {
+                inputElem.classList.remove('error');
+            }
+            saveState();
+        }
+
+        function sendOrderViaWhatsApp() {
+            const nameInput = document.getElementById('custName');
+            const cityInput = document.getElementById('custCity');
+            const mobileInput = document.getElementById('custMobile');
+
+            const custName = nameInput.value.trim();
+            const custCity = cityInput.value.trim();
+            const custMobile = mobileInput.value.trim();
+
+            let hasError = false;
+
+            // Strict Validation for Mandatory Fields
+            if (!custName) {
+                nameInput.classList.add('error');
+                hasError = true;
+            } else {
+                nameInput.classList.remove('error');
+            }
+
+            if (!custCity) {
+                cityInput.classList.add('error');
+                hasError = true;
+            } else {
+                cityInput.classList.remove('error');
+            }
+
+            if (custMobile.replace(/\D/g, '').length < 7) {
+                mobileInput.classList.add('error');
+                hasError = true;
+            } else {
+                mobileInput.classList.remove('error');
+            }
+
+            if (hasError) {
+                showToast("⚠️ Please enter a valid Name, City and Mobile Number!", "error");
+                document.getElementById('customerDetailsBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            let totalItems = 0;
+            let grandTotal = 0;
+            let itemsText = '';
+            let idx = 1;
+
+            for (const key in cart) {
+                const item = cart[key];
+                if (item.qty > 0) {
+                    const sub = item.qty * item.price;
+                    totalItems += item.qty;
+                    grandTotal += sub;
+
+                    itemsText += `${idx}. *${item.name}* (${item.code})\n`;
+                    itemsText += `   └ Size: ${item.size} × ${item.qty} = ₹${sub.toLocaleString('en-IN')}\n`;
+                    idx++;
+                }
+            }
+
+            if (totalItems === 0) {
+                showToast("🛒 Please select at least 1 product item!", "error");
+                return;
+            }
+
+            // Construct Clean WhatsApp Order Message
+            let msg = `*NEW AYURVEDIC ORDER*\n`;
+            msg += `--------------------------------\n`;
+            msg += `👤 *Customer Name:* ${custName}\n`;
+            msg += `📍 *City:* ${custCity}\n`;
+            msg += `📱 *Mobile:* ${custMobile}\n`;
+            msg += `--------------------------------\n\n`;
+            msg += `*SELECTED ITEMS:*\n${itemsText}\n`;
+            msg += `--------------------------------\n`;
+            msg += `📦 *Total Items:* ${totalItems}\n`;
+            msg += `💰 *GRAND TOTAL:* ₹${grandTotal.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n`;
+            msg += `--------------------------------\n`;
+            msg += `Please confirm stock & dispatch timeline.`;
+
+            saveState();
+
+            const encoded = encodeURIComponent(msg);
+            const waUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encoded}`;
+
+            showToast("📲 Opening WhatsApp...", "success");
+
+            // IMPORTANT: this must run synchronously inside the click handler.
+            // The previous version wrapped this in setTimeout(), which delays it
+            // past the original click event — iOS Safari and in-app browsers
+            // (Instagram/Facebook/etc.) treat a delayed redirect as an untrusted
+            // popup and silently block it, so the WhatsApp app never opened on
+            // many phones. Opening synchronously (and in a new tab) fixes that
+            // and keeps this catalog page alive in case the customer comes back.
+            const opened = window.open(waUrl, '_blank', 'noopener');
+            if (!opened) {
+                window.location.href = waUrl;
+            }
+        }
+
+        function filterProducts() {
+            const input = document.getElementById('searchInput');
+            searchQuery = input.value.trim();
+            const clearBtn = document.getElementById('clearSearchBtn');
+
+            if (searchQuery !== '') {
+                clearBtn.style.display = 'block';
+            } else {
+                clearBtn.style.display = 'none';
+            }
+
+            renderCatalog();
+        }
+
+        function clearSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const clearBtn = document.getElementById('clearSearchBtn');
+            searchInput.value = '';
+            searchQuery = '';
+            clearBtn.style.display = 'none';
+            renderCatalog();
+        }
+
+        function filterCategory(cat) {
+            activeCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                if (btn.getAttribute('data-cat') === cat) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            renderCatalog();
+        }
+
+        function showToast(msg, type = "info") {
+            const toast = document.getElementById('toast');
+            const toastText = document.getElementById('toastText');
+            const toastIcon = document.getElementById('toastIcon');
+
+            if (!toast) return;
+
+            toastText.innerText = msg;
+            if (type === "error") {
+                toastIcon.innerText = "❌";
+            } else if (type === "success") {
+                toastIcon.innerText = "✅";
+            } else {
+                toastIcon.innerText = "ℹ️";
+            }
+
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
